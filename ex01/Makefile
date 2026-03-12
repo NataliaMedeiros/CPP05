@@ -1,6 +1,6 @@
 NAME = bureaucrat
 
-SRC = Bureaucrat.cpp main.cpp
+SRC = Bureaucrat.cpp main.cpp Form.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -15,9 +15,9 @@ $(NAME): $(OBJ)
 clean:
 	rm -f $(OBJ)
 
-fclean: clean
+fclean: cleang
 	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all, clean, fclean, re
+.PHONY: all clean fclean re

@@ -3,9 +3,9 @@
 Bureaucrat::Bureaucrat(const std::string name, int grade) : name(name), grade(grade)
 {
 	if (grade < 1)
-		//include action
+		throw GradeTooHighException();
 	if (grade > 150)
-		//include action
+		throw GradeTooLowException();
 	std::cout << "Bureaucrat named " << name << " was created" << std::endl;
 }
 
@@ -26,7 +26,6 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& rhs)
 Bureaucrat::~Bureaucrat()
 {
 	std::cout << "Bureaucrat named " << name << " was destroid" << std::endl;
-
 }
 
 std::string	Bureaucrat::getName() const
@@ -39,19 +38,22 @@ int	Bureaucrat::getGrade() const
 	return (grade);
 }
 
-void	Bureaucrat::setGrade(int newGrade)
-{
-	grade = newGrade;
-}
-
 void	Bureaucrat::incrementGrade()
 {
-	if (grade >= 150)
-		// go to exception
-	grade++;
+	if (grade <= 1)
+		throw GradeTooLowException();
+	grade--;
 }
 
 void	Bureaucrat::decrementGrade()
 {
+	if (grade >= 150)
+		throw GradeTooHighException();
+	grade++;
+}
 
+std::ostream&	operator<<(std::ostream& os, const Bureaucrat& object)
+{
+	os << object.getName() <<  " bureaucrat grade: " << object.getGrade() << ".";
+	return (os);
 }

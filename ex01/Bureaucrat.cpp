@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-// #include "Form.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) : name(name), grade(grade)
 {
@@ -68,7 +68,6 @@ void	Bureaucrat::signForm(Form& form)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << name << " does not have the clearance to sign of on form " <<
-		form.getName()<< ", " << e.what() << std::endl;
+		std::cerr << name << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
 	}
 }

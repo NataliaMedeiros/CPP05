@@ -1,13 +1,12 @@
 #include "Form.hpp"
-// #include "Bureaucrat.hpp"
+#include "Bureaucrat.hpp"
 
-Form::Form(const std::string name, int sign, int execute) : name(name), gradeSign(sign), gradeExecute(execute)
+Form::Form(const std::string name, int sign, int execute) : name(name), isSigned(false), gradeSign(sign), gradeExecute(execute)
 {
 	if (gradeSign < 1 || gradeExecute < 1)
 		throw GradeTooHighException();
 	else if (gradeSign > 150 || gradeExecute > 150)
 		throw GradeTooLowException();
-	isSigned = false;
 	std::cout << "An unsigned form was created" << std::endl;
 }
 Form::Form(const Form& original) : name(original.name), gradeSign(original.gradeSign), gradeExecute(original.gradeExecute)

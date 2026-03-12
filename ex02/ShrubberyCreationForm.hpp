@@ -3,8 +3,9 @@
 
 	#include "AForm.hpp"
 	#include "Bureaucrat.hpp"
+	#include <fstream>
 
-	class ShrubberyCreationForm : AForm
+	class ShrubberyCreationForm : public AForm
 	{
 		private:
 			const std::string	target;
@@ -15,7 +16,7 @@
 			~ShrubberyCreationForm();
 
 			std::string	getTarget() const;
-			void		execute() const override;//implement
+			void	execute(Bureaucrat const & executor) const override;
 	};
 
 	#endif

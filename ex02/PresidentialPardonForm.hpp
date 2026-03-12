@@ -11,10 +11,10 @@ class PresidentialPardonForm : public AForm
 	public:
 		PresidentialPardonForm(const std::string& target);
 		PresidentialPardonForm(const PresidentialPardonForm& original);
-        PresidentialPardonForm& operator=(const PresidentialPardonForm& rhs);
+		PresidentialPardonForm& operator=(const PresidentialPardonForm& rhs);
 		~PresidentialPardonForm();
 
-		void execute() const override; //implement
+		void	execute(Bureaucrat const & executor) const override;
 };
 
 #endif

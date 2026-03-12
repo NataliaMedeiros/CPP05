@@ -25,3 +25,19 @@ std::string	ShrubberyCreationForm::getTarget() const
 {
 	return (this->target);
 }
+
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
+{
+	std::ofstream file((target + "_shrubbery").c_str());
+
+	file <<
+	"       _-_\n"
+	"    /~~   ~~\\\n"
+	" /~~         ~~\\\n"
+	"{               }\n"
+	" \\  _-     -_  /\n"
+	"   ~  \\ //  ~\n"
+	"_- -   | | _- _\n"
+	"  _ -  | |   -_\n"
+	"      // \\\n";
+}

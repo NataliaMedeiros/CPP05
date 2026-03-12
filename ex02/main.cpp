@@ -1,5 +1,8 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 void	testDecrement(Bureaucrat &bureaucrat)
 {
@@ -62,69 +65,20 @@ void	testLowGrade()
 
 int main()
 {
-	// TODO -> check about try to inscribe twice on the same form
-	// Creating bureaucrats and forms
-	std::cout << "*** Creating bureaucrats and forms: ***" << std::endl;
-	Bureaucrat	bob("Bob", 10);
-	Bureaucrat alice("Alice", 1);
-	AForm		form1("Form1", 1, 1);
-	AForm		form2("Form2", 1, 1);
-	std::cout << std::endl;
+	srand(time(NULL));
 
-	// Creating invalids form
-	std::cout << "*** Creating a too low grade invalid form ***" << std::endl;
-	try
-	{
-		AForm	wrongForm("too low", 200, 200);
-	}
-	catch (std::exception& e)
-	{
-		std::cerr << "Error creating form, " << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-	std::cout << "*** Creating a too high grade invalid form ***" << std::endl;
-	try
-	{
-		AForm	wrongForm("too high", 0, 0);
-	}
-	catch (std::exception& e)
-	{
-		std::cerr << "Error creating form, " << e.what() << std::endl;
-	}
-	std::cout << std::endl;
+	Bureaucrat boss("Boss", 1);
 
-	// Attempt to sign with Bob (grade 10) → should fail for form1 and form2
-	std::cout << "*** Attempt to sign with Bob (grade 10) → should fail for form1 and form2: ***" << std::endl;
-	// bob.signForm(form1);
-	// bob.signForm(form2);
-	std::cout << std::endl;
+	ShrubberyCreationForm shrub("home");
+	RobotomyRequestForm robot("Bender");
+	PresidentialPardonForm pardon("Ford");
 
-	// Attempt to sign with Alice (grade 1) → should succeed for both forms
-	std::cout << "*** Alice attempts to sign forms: ***" << std::endl;
-	// alice.signForm(form1);
-	// alice.signForm(form2);
-	std::cout << std::endl;
+	boss.signForm(shrub);
+	boss.signForm(robot);
+	boss.signForm(pardon);
 
-	// Print form statuses using the operator<< overload
-	std::cout << "*** Form statuses after signing attempts: ***" << std::endl;
-	// std::cout << form1;
-	// std::cout << form2;
-	std::cout << std::endl;
-
-	// Increment Bob's grade for him to be accepted on both forms:
-	std::cout << "*** Increment Bob's grade for him to be accepted on both forms: ***" << std::endl;
-	while (bob.getGrade() > 1)
-		bob.incrementGrade();
-	std::cout << "The current grade of Bob is: " << bob.getGrade() << std::endl;
-
-	std::cout << std::endl;
-	// bob.signForm(form1);
-	std::cout << std::endl;
-
-	testIncrement(alice);
-	testDecrement(bob);
-
-	// Destructors being called
-	std::cout << "*** Destructors being called: ***" << std::endl;
-	return (0);;
+	boss.executeForm(shrub);
+	boss.executeForm(robot);
+	boss.executeForm(pardon);
+	return (0);
 }

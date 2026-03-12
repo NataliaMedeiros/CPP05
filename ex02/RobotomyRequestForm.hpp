@@ -3,6 +3,8 @@
 
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
+#include <cstdlib>
+#include <ctime>
 
 class RobotomyRequestForm : public AForm
 {
@@ -14,7 +16,7 @@ class RobotomyRequestForm : public AForm
 		RobotomyRequestForm& operator=(const RobotomyRequestForm& rhs);
 		~RobotomyRequestForm();
 
-		void execute() const override; //implement
+		void	execute(Bureaucrat const & executor) const override;
 };
 
 #endif

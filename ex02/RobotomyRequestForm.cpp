@@ -5,7 +5,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRe
 	std::cout << "*** RobotomyRequestForm was created***" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& original) : AForm(original), target(target)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& original) : AForm(original), target(original.target)
 {
 	std::cout << "Cpy Constructor" << std::endl;
 }
@@ -19,4 +19,14 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& r
 RobotomyRequestForm::~RobotomyRequestForm()
 {
 	std::cout << "***RobotomyRequestForm destroyed***" << std::endl;
+}
+
+void RobotomyRequestForm::execute(Bureaucrat const & executor) const
+{
+	std::cout << "* drilling noises *" << std::endl;
+
+	if (rand() % 2)
+		std::cout << target << " has been robotomized successfully" << std::endl;
+	else
+		std::cout << "Robotomy failed" << std::endl;
 }

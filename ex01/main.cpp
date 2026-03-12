@@ -66,8 +66,8 @@ int main()
 	// Creating bureaucrats and forms
 	std::cout << "*** Creating bureaucrats and forms: ***" << std::endl;
 	Bureaucrat	bob("Bob", 10);
-	Bureaucrat alice("Alice", 2);
-	Form		form1("Form1", 2, 1);
+	Bureaucrat alice("Alice", 1);
+	Form		form1("Form1", 1, 1);
 	Form form2("Form2", 1, 1);
 	std::cout << std::endl;
 

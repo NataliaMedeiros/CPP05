@@ -9,7 +9,7 @@ Form::Form(const std::string name, int sign, int execute) : name(name), isSigned
 		throw GradeTooLowException();
 	std::cout << "An unsigned form was created" << std::endl;
 }
-Form::Form(const Form& original) : name(original.name), gradeSign(original.gradeSign), gradeExecute(original.gradeExecute)
+Form::Form(const Form& original) : name(original.name), isSigned(original.isSigned), gradeSign(original.gradeSign), gradeExecute(original.gradeExecute)
 {
 	std::cout << "Copy form was created" << std::endl;
 }

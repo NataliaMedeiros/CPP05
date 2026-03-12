@@ -28,8 +28,8 @@ std::string	ShrubberyCreationForm::getTarget() const
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
+	AForm::execute(executor);
 	std::ofstream file((target + "_shrubbery").c_str());
-
 	file <<
 	"       _-_\n"
 	"    /~~   ~~\\\n"

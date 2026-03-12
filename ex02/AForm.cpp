@@ -9,7 +9,7 @@ AForm::AForm(const std::string name, int sign, int execute) : name(name), isSign
 		throw GradeTooLowException();
 	std::cout << "An unsigned form was created" << std::endl;
 }
-AForm::AForm(const AForm& original) : name(original.name), gradeSign(original.gradeSign), gradeExecute(original.gradeExecute)
+AForm::AForm(const AForm& original) : name(original.name), isSigned(original.isSigned), gradeSign(original.gradeSign), gradeExecute(original.gradeExecute)
 {
 	std::cout << "Copy form was created" << std::endl;
 }
@@ -68,7 +68,5 @@ void AForm::execute(Bureaucrat const & executor) const
 
 	if (executor.getGrade() > gradeExecute)
 		throw GradeTooLowException();
-
-	// executeAction();
 }
 

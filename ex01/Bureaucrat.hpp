@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <string>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
@@ -20,6 +23,8 @@ class Bureaucrat
 
 		void		incrementGrade();
 		void		decrementGrade();
+
+		void  signForm(Form& form);
 
 		/* The subject says the exceptions must be catchable using try{} catch {}, and
 			for this to work, the class must inherit from std::exception.

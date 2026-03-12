@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+// #include "Form.hpp"
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) : name(name), grade(grade)
 {
@@ -56,4 +57,18 @@ std::ostream&	operator<<(std::ostream& os, const Bureaucrat& object)
 {
 	os << object.getName() << ", bureaucrat grade " << object.getGrade() << ".";
 	return (os);
+}
+
+void	Bureaucrat::signForm(Form& form)
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << name << " signed form " << form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << name << " does not have the clearance to sign of on form " <<
+		form.getName()<< ", " << e.what() << std::endl;
+	}
 }

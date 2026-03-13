@@ -1,29 +1,42 @@
-#include "Bureaucrat.hpp"
-#include "AForm.hpp"
+#include "Intern.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include <iostream>
 
 int main()
 {
-	std::srand(std::time(nullptr)); //That ensures the robotomy result is different each run.
+    Intern someRandomIntern;
+    AForm* form;
 
-	Bureaucrat boss("Boss", 1);
+    std::cout << "=== Test 1: Shrubbery Creation Form ===" << std::endl;
+    form = someRandomIntern.makeForm("shrubbery creation", "Home");
+    if (form)
+    {
+        std::cout << "Form created: " << form->getName() << std::endl;
+        delete form; // always free memory
+    }
 
-	ShrubberyCreationForm shrub("home");
-	RobotomyRequestForm robot("Bender");
-	PresidentialPardonForm pardon("Ford");
+    std::cout << "\n=== Test 2: Robotomy Request Form ===" << std::endl;
+    form = someRandomIntern.makeForm("robotomy request", "Bender");
+    if (form)
+    {
+        std::cout << "Form created: " << form->getName() << std::endl;
+        delete form;
+    }
 
-	boss.signForm(shrub);
-	boss.signForm(robot);
-	boss.signForm(pardon);
+    std::cout << "\n=== Test 3: Presidential Pardon Form ===" << std::endl;
+    form = someRandomIntern.makeForm("presidential pardon", "Alice");
+    if (form)
+    {
+        std::cout << "Form created: " << form->getName() << std::endl;
+        delete form;
+    }
 
-	boss.executeForm(shrub);
-	boss.executeForm(robot);
-	boss.executeForm(pardon);
+    std::cout << "\n=== Test 4: Invalid Form ===" << std::endl;
+    form = someRandomIntern.makeForm("invalid form", "Nobody");
+    if (form)
+        delete form;
 
-	RobotomyRequestForm r("Bender");
-
-	boss.executeForm(r);
-	return (0);
+    return 0;
 }

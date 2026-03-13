@@ -1,5 +1,5 @@
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 #include <iostream>
 #include <string>
@@ -19,10 +19,10 @@ class AForm
 		AForm& operator=(const AForm& rhs);
 		virtual ~AForm();
 
-		std::string	getName() const;
-		bool		getSigned() const;
-		int			getGradeSign() const;
-		int			getGradeExecute() const;
+		const std::string&	getName() const;
+		bool				getSigned() const;
+		int					getGradeSign() const;
+		int					getGradeExecute() const;
 
 		void			beSigned(const Bureaucrat& b);
 		virtual void	execute(Bureaucrat const & executor) const = 0;

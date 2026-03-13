@@ -12,7 +12,8 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& origin
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& rhs)
 {
-	(void)rhs;
+	if (this != &rhs)
+		AForm::operator=(rhs);
 	return (*this);
 }
 
@@ -29,7 +30,9 @@ std::string	ShrubberyCreationForm::getTarget() const
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	AForm::execute(executor);
-	std::ofstream file((target + "_shrubbery").c_str());
+	std::ofstream file((target + "_shrubbery").c_str()); //Creating the output file
+	if (!file)
+		throw std::runtime_error("Failed to create shrubbery file");
 	file <<
 	"       _-_\n"
 	"    /~~   ~~\\\n"

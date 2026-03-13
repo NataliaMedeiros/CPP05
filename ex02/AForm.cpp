@@ -25,7 +25,7 @@ AForm::~AForm()
 	std::cout << "Form was destroyed" << std::endl;
 }
 
-std::string	AForm::getName() const
+const std::string&	AForm::getName() const
 {
 	return(name);
 }

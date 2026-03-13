@@ -12,7 +12,8 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& original) : 
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& rhs)
 {
-	(void)rhs;
+	if (this != &rhs)
+		AForm::operator=(rhs);
 	return (*this);
 }
 
@@ -23,9 +24,9 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
-	AForm::execute(executor);
+	AForm::execute(executor); // it's important to check the conditions 
 	std::cout << "* drilling noises *" << std::endl;
-	if (rand() % 2)
+	if (std::rand() % 2)
 		std::cout << target << " has been robotomized successfully" << std::endl;
 	else
 		std::cout << "Robotomy failed" << std::endl;

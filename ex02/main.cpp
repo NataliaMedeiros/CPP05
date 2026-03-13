@@ -6,7 +6,7 @@
 
 int main()
 {
-	std::srand(std::time(nullptr));
+	std::srand(std::time(nullptr)); //That ensures the robotomy result is different each run.
 
 	Bureaucrat boss("Boss", 1);
 
@@ -21,5 +21,9 @@ int main()
 	boss.executeForm(shrub);
 	boss.executeForm(robot);
 	boss.executeForm(pardon);
+
+	RobotomyRequestForm r("Bender");
+
+	boss.executeForm(r);
 	return (0);
 }

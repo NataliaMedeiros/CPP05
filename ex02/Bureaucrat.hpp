@@ -23,7 +23,7 @@ class Bureaucrat
 		void		incrementGrade();
 		void		decrementGrade();
 
-		void		signForm(AForm& AForm);
+		void		signForm(AForm& form);
 		void		executeForm(AForm const & form) const; //implement
 
 		/* The subject says the exceptions must be catchable using try{} catch {}, and
